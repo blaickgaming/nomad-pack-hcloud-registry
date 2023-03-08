@@ -1,7 +1,7 @@
 variable "name" {
   description = "Name of the Nomad job"
   type        = string
-  default     = "hcloud-csi"
+  default     = "hcloud_telemetry_visualisation"
 }
 
 variable "datacenters" {
