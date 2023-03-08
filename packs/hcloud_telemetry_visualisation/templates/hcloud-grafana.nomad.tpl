@@ -89,7 +89,7 @@ job "[[ template "name" . ]]-grafana" {
         name = "grafana"
         port = "http"
         tags = [
-          [[ template "grafana_traefik_host" . ]]
+          [[ template "grafana_host_address" . ]]
         ]
 
         check {
