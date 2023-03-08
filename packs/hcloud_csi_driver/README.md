@@ -6,7 +6,7 @@ This is a Container Storage Interface driver for Hetzner Cloud enabling you to u
 
 `datacenters` (list of string) - Datacenters this job will be deployed
 
-`image` (string) - Redis Docker image.
+`image_version` (string) - Redis Docker image.
 
 `name` (string) - Name of the Nomad job
 
@@ -14,4 +14,6 @@ This is a Container Storage Interface driver for Hetzner Cloud enabling you to u
 
 `region` (string) - Region where the job should be placed.
 
-`resources` (object) - Resources to assign this job
+`resources_controller` (object) - Resources to assign this job
+
+`resources_node` (object) - Resources to assign this job

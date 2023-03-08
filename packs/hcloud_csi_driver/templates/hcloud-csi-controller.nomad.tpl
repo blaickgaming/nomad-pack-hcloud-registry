@@ -1,15 +1,15 @@
-job [[ template "job_name" . ]] {
+job "[[ template "name" . ]]-controller" {
 
   [[ template "region" . ]]
-  datacenters = [[ .hcloud-csi-controller.datacenters | toStringList ]]
+  datacenters = [[ .hcloud_csi_driver.datacenters | toStringList ]]
   type        = "service"
 
-  group "hcloud-csi-controller" {
+  group "csi-controller" {
 
-    task "csi-controller" {
+    task "plugin" {
       driver = "docker"
       config {
-        image      = [[ .hcloud-csi-controller.image | quote ]]
+        image      = "hetznercloud/hcloud-csi-driver:[[ .hcloud_csi_driver.image_version ]]"
         privileged = true
         command    = "/bin/hcloud-csi-driver-controller"
       }
@@ -17,7 +17,7 @@ job [[ template "job_name" . ]] {
       template {
         data        = <<-EOH
         CSI_ENDPOINT = "unix://csi/csi.sock"
-        HCLOUD_TOKEN = "[[ .hcloud-csi-controller.token | quote ]]"
+        HCLOUD_TOKEN = [[ .hcloud_csi_driver.token | quote ]]
         EOH
         change_mode = "restart"
         destination = "secret/file.env"
@@ -31,8 +31,8 @@ job [[ template "job_name" . ]] {
       }
 
       resources {
-        cpu    = [[ .hcloud-csi-controller.resources.cpu ]]
-        memory = [[ .hcloud-csi-controller.resources.memory ]]
+        cpu    = [[ .hcloud_csi_driver.resources_controller.cpu ]]
+        memory = [[ .hcloud_csi_driver.resources_controller.memory ]]
       }
     }
   }

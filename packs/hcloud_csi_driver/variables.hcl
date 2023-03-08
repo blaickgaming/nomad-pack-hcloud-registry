@@ -1,7 +1,7 @@
 variable "name" {
   description = "Name of the Nomad job"
   type        = string
-  default     = "hcloud-csi-controller"
+  default     = "hcloud-csi"
 }
 
 variable "token" {
@@ -22,13 +22,25 @@ variable "region" {
   default     = "global"
 }
 
-variable "image" {
+variable "image_version" {
   description = "Docker image this job will use for deployment"
   type        = string
-  default     = "hetznercloud/hcloud-csi-driver:2.0.0"
+  default     = "2.0.0"
 }
 
-variable "resources" {
+variable "resources_controller" {
+  description = "Resources to assign this job"
+  type        = object({
+    cpu       = number
+    memory    = number
+  })
+  default     = {
+    cpu       = 100,
+    memory    = 64
+  }
+}
+
+variable "resources_node" {
   description = "Resources to assign this job"
   type        = object({
     cpu       = number

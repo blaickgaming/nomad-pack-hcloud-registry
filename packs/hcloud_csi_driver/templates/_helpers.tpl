@@ -1,0 +1,13 @@
+[[- define "name" -]]
+[[- if eq .hcloud_csi_driver.name "" -]]
+[[- .nomad_pack.pack.name -]]
+[[- else -]]
+[[- .hcloud_csi_driver.name -]]
+[[- end -]]
+[[- end -]]
+
+[[- define "region" -]]
+[[- if not (eq .hcloud_csi_driver.region "") -]]
+region = [[ .hcloud_csi_driver.region | quote]]
+[[- end -]]
+[[- end -]]
