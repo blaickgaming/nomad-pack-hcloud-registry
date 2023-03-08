@@ -1,7 +1,7 @@
 job "[[ template "name" . ]]-node" {
 
   [[ template "region" . ]]
-  datacenters = [[ .hcloud-csi-driver.datacenters | toStringList ]]
+  datacenters = [[ .hcloud_csi_driver.datacenters | toStringList ]]
   type        = "system"
 
   group "csi-node" {
