@@ -1,0 +1,13 @@
+[[- define "name" -]]
+[[- if eq .hcloud_netdata.name "" -]]
+[[- .nomad_pack.pack.name -]]
+[[- else -]]
+[[- .hcloud_netdata.name -]]
+[[- end -]]
+[[- end -]]
+
+[[- define "region" -]]
+[[- if not (eq .hcloud_netdata.region "") -]]
+region = [[ .hcloud_netdata.region | quote]]
+[[- end -]]
+[[- end -]]
