@@ -1,0 +1,13 @@
+[[- define "job_name" -]]
+[[- if eq .hcloud-csi-controller.job_name "" -]]
+[[- .nomad_pack.pack.name | quote -]]
+[[- else -]]
+[[- .hcloud-csi-controller.job_name | quote -]]
+[[- end -]]
+[[- end -]]
+
+[[- define "region" -]]
+[[- if not (eq .hcloud-csi-controller.region "") -]]
+region = [[ .hcloud-csi-controller.region | quote]]
+[[- end -]]
+[[- end -]]
