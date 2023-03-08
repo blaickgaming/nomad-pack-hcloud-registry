@@ -1,7 +1,7 @@
 job "[[ template "name" . ]]-prometheus" {
   
   [[ template "region" . ]]
-  datacenters = [[ .hcloud_csi_driver.datacenters | toStringList ]]
+  datacenters = [[ .hcloud_telemetry_visualisation.datacenters | toStringList ]]
   
   constraint {
     attribute = "${attr.kernel.name}"
